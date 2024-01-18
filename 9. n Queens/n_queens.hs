@@ -16,7 +16,8 @@ printBoard n positions = sequence_ [putStrLn [if (i, j) `elem` positions then 'Q
 
 main :: IO ()
 main = do
+    putStrLn "Enter the size of the board: "
     n <- readLn :: IO Int
     let solutions = nQueens n
     putStrLn $ "Found " ++ show (length solutions) ++ " solutions"
-    mapM_ (printBoard n) solutions
+    mapM_ (\solution -> printBoard n solution >> putStrLn "") solutions
